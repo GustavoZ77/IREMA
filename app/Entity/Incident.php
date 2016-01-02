@@ -1,9 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * All incidents for all applications 
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
  */
 
 namespace App\Entity;
@@ -18,55 +25,126 @@ use Doctrine\ORM\Mapping AS ORM;
  */
 class Incident {
 
-    /** 
+    /**
+     * Primary key
+     * 
      * @ORM\id 
      * @ORM\Column(type="integer") 
      * @ORM\GeneratedValue 
+     * @var Integer
+     * @access private 
      */
     private $id;
 
-
-    /** @ORM\ManyToOne(targetEntity="Application", inversedBy="incidents") */
+    /**
+     * Application for the incident
+     * 
+     * @ORM\ManyToOne(targetEntity="Application", inversedBy="incidents") 
+     * @var Application
+     * @access private
+     */
     private $application;
 
-    /** @ORM\oneToOne(targetEntity="Type_Incident") */
+    /**
+     * Type of the incident
+     * 
+     * @ORM\oneToOne(targetEntity="Type_Incident") 
+     * @var Type_Incident
+     * @access private
+     */
     private $type_incident;
 
-    /** @ORM\oneToOne(targetEntity="Priority") */
+    /**
+     * The priority for resolve the incident
+     * 
+     * @ORM\oneToOne(targetEntity="Priority") 
+     * @var Priority
+     * @access private
+     */
     private $priority;
 
-    /** @ORM\Column(type="date") */
+    /**
+     * date of incident registration
+     *  
+     * @ORM\Column(type="date") 
+     * @var Date
+     * @access private
+     */
     private $date_incident;
 
-    /** @ORM\Column(type="date") */
+    /**
+     * last modification date
+     * 
+     * @ORM\Column(type="date") 
+     * @var Date
+     * @access private
+     */
     private $last_update;
 
-    /** @ORM\Column(type="string") */
+    /**
+     * description of incident
+     * 
+     * @ORM\Column(type="string") 
+     * @var String
+     * @access private
+     */
     private $description;
 
     /**
+     * User (type user SUPPORT) who will work with the resolution
+     * 
      * @ORM\ManyToOne(targetEntity="User", inversedBy="incidents_asigned", cascade={"persist"}, fetch="LAZY" )
      * @ORM\JoinColumn(name="asigned", referencedColumnName="id")
+     * @var User
+     * @access private
      */
     private $asigned;
 
     /**
+     * the user who created the incident
+     * 
      * @ORM\ManyToOne(targetEntity="User", inversedBy="incidents_created", cascade={"persist"}, fetch="LAZY" )
      * @ORM\JoinColumn(name="entered", referencedColumnName="id")
+     * @var User
+     * @access private
      */
     private $entered_by;
 
     /**
+     * the last user who modified the incident
+     * 
      * @ORM\ManyToOne(targetEntity="User", inversedBy="incidents_updated", cascade={"persist"}, fetch="LAZY" )
      * @ORM\JoinColumn(name="updated", referencedColumnName="id")
+     * @ORM\JoinColumn(name="entered", referencedColumnName="id")
+     * @var User
+     * @access private
      */
     private $updated_by;
 
-    /** @ORM\Column(type="string") * */
+    /**
+     * The solution for incident
+     *  
+     * @ORM\Column(type="string")
+     * @var User
+     * @access private 
+     */
     private $solution;
 
-    /** @ORM\Column(type="integer") * */
+    /**
+     * status for the incident[SCHEDULED, WORK IN PROGRESS, COMPLETED]
+     * 
+     *  @ORM\Column(type="integer") 
+     * @var User
+     * @access private 
+     */
     private $status_incident;
+
+    /* margic set method
+     * 
+     * @param $property
+     * @param $value 
+     * @access public
+     */
 
     public function __set($property, $value) {
         if (property_exists(__CLASS__, $property)) {
@@ -75,6 +153,13 @@ class Incident {
             throw new PropertyNotFoundException('Not found the property ' . $property);
         }
     }
+
+    /* margic get method
+     * 
+     * @param $name 
+     * @access public
+     * @return property 
+     */
 
     public function __get($name) {
         if (property_exists(__CLASS__, $name)) {

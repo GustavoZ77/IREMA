@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * incident controller 
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
+ */
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\IncidentRequest;
@@ -132,6 +145,12 @@ class IncidentController extends Controller {
         $incident->__set("status_incident", 0);
         $this->em->persist($incident);
         $this->em->flush();
+        $date_incident =$incident->__get("date_incident")->format('d/m/Y');
+        $user = Auth::User();
+        Mail::send('email.newincident', ['inc' => $incident,'date_incident'=>$date_incident], function($message) use ($incident,$user) {
+            $message->to($incident->asigned->__get("email"), $user->__get("name"))->subject('New Incident!');
+            $message->cc([$incident->application->customer->__get("email"),$user->__get("email")]);
+        });
         flash('The incident has been created')->important();
         return \Redirect::route('incident_index');
     }
@@ -185,7 +204,11 @@ class IncidentController extends Controller {
         $incident->__set("status_incident", 1);
         $this->em->merge($incident);
         $this->em->flush();
-
+        $user = Auth::User();
+        Mail::send('email.updateincident', ['inc' => $incident], function($message) use ($incident,$user) {
+            $message->to($incident->asigned->__get("email"), $user->__get("name"))->subject('The incident has been updated!');
+            $message->cc([$incident->application->customer->__get("email"),$user->__get("email")]);
+        });
         flash('The incident has been updated')->important();
         return \Redirect::route('incident_index');
     }
@@ -203,7 +226,11 @@ class IncidentController extends Controller {
         $incident->__set("status_incident", 2);
         $this->em->merge($incident);
         $this->em->flush();
-
+        $user = Auth::User();
+        Mail::send('email.updateincident', ['inc' => $incident], function($message) use ($incident,$user) {
+            $message->to($incident->asigned->__get("email"), $user->__get("name"))->subject('The incident has been updated!');
+            $message->cc([$incident->application->customer->__get("email"),$user->__get("email")]);
+        });
         flash('The incident has been updated')->important();
         return \Redirect::route('incident_index');
     }
@@ -222,7 +249,11 @@ class IncidentController extends Controller {
         $incident->__set("status_incident", 0);
         $this->em->merge($incident);
         $this->em->flush();
-
+        $user = Auth::User();
+        Mail::send('email.updateincident', ['inc' => $incident], function($message) use ($incident,$user) {
+            $message->to($incident->asigned->__get("email"), $user->__get("name"))->subject('The incident has been updated!');
+            $message->cc([$incident->application->customer->__get("email"),$user->__get("email")]);
+        });
         flash('The incident has been updated')->important();
         return \Redirect::route('incident_index');
     }

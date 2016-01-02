@@ -1,9 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * All users into the application
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
  */
 
 namespace App\Entity;
@@ -22,59 +29,73 @@ class User extends Person implements \LaravelDoctrine\ORM\Contracts\Auth\Authent
 
     use \LaravelDoctrine\ORM\Auth\Authenticatable;
 
-    protected $em;
-
     /**
+     * All incidents asigned to one user
+     * 
      * @ORM\OneToMany(targetEntity="Incident", mappedBy="asigned") 
+     * @var Incidents
+     * @access protected 
      */
     private $incidents_asigned;
 
     /**
+     * All incidents created
+     * 
      * @ORM\OneToMany(targetEntity="Incident", mappedBy="entered_by") 
+     * @var Incidents
+     * @access protected 
      */
     private $incidents_created;
 
     /**
+     * All incidentes updated
+     * 
      * @ORM\OneToMany(targetEntity="Incident", mappedBy="updated_by") 
+     * @var Incidents
+     * @access protected 
      */
     private $incidents_updated;
 
     /**
+     * Type user [ADMIN,USER,SUPPORT]
+     * 
      * @ORM\ManyToOne(targetEntity="Type_User", inversedBy="users", cascade={"persist"}, fetch="LAZY" )
      * @ORM\JoinColumn(name="type_user", referencedColumnName="id")
+     * @var Type_user
+     * @access protected 
      */
     public $type_user;
 
     /**
+     * The customer for this user
+     * 
      * @ORM\ManyToOne(targetEntity="Customer", inversedBy="customer", cascade={"persist"}, fetch="LAZY" )
      * @ORM\JoinColumn(name="customer", referencedColumnName="id")
+     * @var Customer
+     * @access protected 
      */
     private $customer;
 
+    
+    /* __construct magic function
+     * 
+     * @access public
+     */
     public function __construct() {
         $this->incidents_asigned = new ArrayCollection();
         $this->incidents_created = new ArrayCollection();
         $this->incidents_updated = new ArrayCollection();
     }
 
+    
+    /* 
+     * Set password and encrypt the word
+     * 
+     * @param $password 
+     * @access public 
+     */
     public function setPassword($password) {
         $this->password = bcrypt($password);
-    }
-
-    public function __set($property, $value) {
-        if (property_exists(__CLASS__, $property)) {
-            $this->$property = $value;
-        } else {
-            throw new PropertyNotFoundException('Not found the property ' . $property);
-        }
-    }
-
-    public function __get($name) {
-        if (property_exists(__CLASS__, $name)) {
-            return $this->$name;
-        } else {
-            throw new PropertyNotFoundException('Not found the property ' . $name);
-        }
     }
 
 }

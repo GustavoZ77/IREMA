@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * TypeIncident controller 
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

@@ -1,9 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Class Customer model all customers
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
  */
 
 namespace App\Entity;
@@ -17,21 +24,58 @@ use Doctrine\ORM\Mapping AS ORM;
  */
 class Customer extends Person {
 
-    /** @ORM\Column(type="string") * */
+    /**
+     * Telephone for customer
+     *  
+     * @ORM\Column(type="string") 
+     * @var String
+     * @access private 
+     */
     private $phone;
 
-    /** @ORM\Column(type="string") * */
+    /**
+     * phisical address 
+     *  
+     * @ORM\Column(type="string") 
+     * @var String
+     * @access private  
+     */
     private $address;
 
-    /** @ORM\Column(type="string") * */
+    /**
+     * Sometimes the customes have stands 
+     *  
+     * @ORM\Column(type="string") 
+     * @var String
+     * @access private 
+     */
     private $stand;
 
-    /** @ORM\oneToMany(targetEntity="Application", mappedBy="customer") */
+    /**
+     * All applications for a Customer
+     * 
+     * @ORM\oneToMany(targetEntity="Application", mappedBy="customer") 
+     * @var Array
+     * @access private 
+     */
     private $applications;
 
-    /** @ORM\oneToMany(targetEntity="User", mappedBy="customer") */
+    /**
+     * A Customer can have  user for create incidents
+     * 
+     * @ORM\oneToMany(targetEntity="User", mappedBy="customer") 
+     * @var Array
+     * @access private 
+     */
     private $users;
 
+    /**
+     * margic set method
+     * 
+     * @param $property
+     * @param $value
+     * @access public
+     */
     public function __set($property, $value) {
         if (property_exists(__CLASS__, $property)) {
             $this->$property = $value;
@@ -40,18 +84,12 @@ class Customer extends Person {
         }
     }
 
-    public function __get($name) {
-        if (property_exists(__CLASS__, $name)) {
-            return $this->$name;
-        } else {
-            throw new PropertyNotFoundException('Not found the property ' . $name);
-        }
-    }
-
-    public function getApplications() {
-        return $this->applications;
-    }
-
+    /* set all application 
+     * 
+     * @param $name 
+     * @access public
+     * @return property 
+     */
     public function setApplications($applications) {
         $this->applications = $applications;
     }

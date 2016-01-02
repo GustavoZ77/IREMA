@@ -1,9 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Set the incidentes on diferent groups
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
  */
 
 namespace App\Entity;
@@ -17,30 +24,62 @@ use Doctrine\ORM\Mapping AS ORM;
  */
 class Type_Incident {
 
-    /** 
+    /**
+     * Primary key
+     * 
      * @ORM\Id 
      * @ORM\Column(type="integer") 
      * @ORM\GeneratedValue 
-     * **/
+     * @var Integer
+     * @access private
+     */
     private $id;
-    /** @ORM\Column(type="string") **/
+
+    /** 
+     * description for type of incident
+     * 
+     * @ORM\Column(type="string") 
+     * @var String
+     * @access private
+     */
     private $description;
-    /** @ORM\Column(type="boolean") **/
+
+    /**
+     * status of the catalog 
+     * 
+     * @ORM\Column(type="boolean")    
+     * @var String
+     * @access private 
+     */
     private $status;
+
+    /* margic set method
+     * 
+     * @param $property
+     * @param $value 
+     * @access public
+     */
 
     public function __set($property, $value) {
         if (property_exists(__CLASS__, $property)) {
             $this->$property = $value;
-        }else{
-            throw new PropertyNotFoundException('Not found the property '.$property);
+        } else {
+            throw new PropertyNotFoundException('Not found the property ' . $property);
         }
     }
 
+    /* margic get method
+     * 
+     * @param $name 
+     * @access public
+     * @return property 
+     */
+
     public function __get($name) {
-        if(property_exists(__CLASS__, $name)){
+        if (property_exists(__CLASS__, $name)) {
             return $this->$name;
-        }else{
-            throw new PropertyNotFoundException('Not found the property '.$name);
+        } else {
+            throw new PropertyNotFoundException('Not found the property ' . $name);
         }
     }
 

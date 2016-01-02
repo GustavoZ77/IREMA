@@ -1,9 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * type of users
+ *
+ *
+ * PHP version 5
+ *
+ * @package    App\Entity
+ * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @version    1.0
+ * @link       http://hightechcoders.com/apps/irema2/
+ * @since      1.0
  */
 
 namespace App\Entity;
@@ -18,21 +25,41 @@ use Doctrine\ORM\Mapping AS ORM;
 class Type_User {
 
     /**
+     * Primary key
+     * 
      * @ORM\Id 
      * @ORM\Column(type="integer") 
      * @ORM\GeneratedValue 
-     * * */
+     * @var Integer
+     * @access private
+     */
     private $id;
 
-    /** @ORM\Column(type="string") * */
-    private $description;
-    
     /**
+     * description for catalog
+     * 
+     * @ORM\Column(type="string")  
+     * @var Integer
+     * @access private
+     */
+    private $description;
+
+    /**
+     * ALl users with this role
+     * 
      * @ORM\OneToMany(targetEntity="User", mappedBy="type_user")
+     * @var array
+     * @access private
      */
     private $users;
 
-    /** @ORM\Column(type="boolean") * */
+    /**
+     * status of the catalog 
+     * 
+     * @ORM\Column(type="boolean")    
+     * @var String
+     * @access private 
+     */
     private $status;
 
     public function __set($property, $value) {
