@@ -28,3 +28,7 @@ b) Conecting to database
 .- please move auth.php to config directory and replace config.php
 .- generate proxy object php artisan doctrine:generate:proxies
 .- into script folder is the db script, please import into your mysql db
+
+references:
+https://laravel.com/docs/5.1
+http://www.laraveldoctrine.org/
