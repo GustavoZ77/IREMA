@@ -17,7 +17,7 @@ a) Preparing the environment
 .- git clone https://github.com/GustavoZ77/IREMA.git temp
 .- replace the composer.json for of the into temp
 .- execute composer install and composer update comand
-.- please move app.php to config directory and replace app.php
+.- please move config/app.php to config directory and replace config/app.php
 
 c) Copying the last files
 
@@ -27,7 +27,7 @@ c) Copying the last files
 
 b) Conecting to database
 
-.- please move auth.php to config directory and replace config.php
+.- please move config/auth.php to config directory and replace config.php
 .- generate proxy object php artisan doctrine:generate:proxies
 .- into script folder is the db script, please import into your mysql db
 
