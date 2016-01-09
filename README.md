@@ -12,9 +12,9 @@ Installation and configuration
 
 a) Preparing the environment
 
-1- Install laravel version https://laravel.com/docs/5.1
-2- Execute composer update
-3- Create a new laravel project for IREMA   
+1- Install laravel version https://laravel.com/docs/5.1   
+2- Execute composer update   
+3- Create a new laravel project for IREMA      
 4- git clone https://github.com/GustavoZ77/IREMA.git temp
 5- replace the composer.json for of the into temp
 6- execute composer install and composer update comand
@@ -22,8 +22,8 @@ a) Preparing the environment
 
 c) Copying the last files
 
-1- please move all files into temp/app and .git to IREMA directory
-2- please move all resources directory and replace into IREMA directory
+1- please move all files into temp/app and .git to IREMA directory   
+2- please move all resources directory and replace into IREMA directory   
 3- please move assests directory to public directory 
 
 b) Conecting to database
