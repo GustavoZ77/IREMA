@@ -12,25 +12,25 @@ Installation and configuration
 
 a) Preparing the environment
 
-.- Install laravel version https://laravel.com/docs/5.1
-.- Execute composer update
-.- Create a new laravel project for IREMA   
-.- git clone https://github.com/GustavoZ77/IREMA.git temp
-.- replace the composer.json for of the into temp
-.- execute composer install and composer update comand
-.- please move config/app.php to config directory and replace config/app.php
+1- Install laravel version https://laravel.com/docs/5.1
+2- Execute composer update
+3- Create a new laravel project for IREMA   
+4- git clone https://github.com/GustavoZ77/IREMA.git temp
+5- replace the composer.json for of the into temp
+6- execute composer install and composer update comand
+7- please move config/app.php to config directory and replace config/app.php
 
 c) Copying the last files
 
-.- please move all files into temp/app and .git to IREMA directory
-.- please move all resources directory and replace into IREMA directory
-.- please move assests directory to public directory 
+1- please move all files into temp/app and .git to IREMA directory
+2- please move all resources directory and replace into IREMA directory
+3- please move assests directory to public directory 
 
 b) Conecting to database
 
-.- please move config/auth.php to config directory and replace config.php
-.- generate proxy object php artisan doctrine:generate:proxies
-.- into script folder is the db script, please import into your mysql db
+1- please move config/auth.php to config directory and replace config.php
+2- generate proxy object php artisan doctrine:generate:proxies
+3- into script folder is the db script, please import into your mysql db
 
 references:
 https://laravel.com/docs/5.1
