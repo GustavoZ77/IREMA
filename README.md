@@ -12,7 +12,8 @@ Installation and configuration
 
 a) Preparing the environment
 
-.- Install laravel version https://laravel.com/docs/master
+.- Install laravel version https://laravel.com/docs/5.1
+.- Execute composer update
 .- Create a new laravel project for IREMA   
 .- git clone https://github.com/GustavoZ77/IREMA.git temp
 .- replace the composer.json for of the into temp
