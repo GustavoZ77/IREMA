@@ -104,19 +104,19 @@ patch('/user/{user}', ['middleware' => 'auth:admin','uses'=>'UserController@upda
 delete('/user/{user}',['middleware' => 'auth:admin', 'uses'=>'UserController@destroy']);
 
 /* Route for incidents */
-Route::get('/incident/', ['as' => 'incident_index','uses' => 'IncidentController@index']);
+Route::get('/incident/', ['as' => 'incident_index','middleware' => 'auth:admin,user,support','uses' => 'IncidentController@index']);
 
-Route::get('/incident/create', ['as' => 'incident_create','uses' => 'IncidentController@create']);
+Route::get('/incident/create', ['as' => 'incident_create','middleware' => 'auth:admin,user,support','uses' => 'IncidentController@create']);
 
-Route::post('/incident/store', ['as' => 'incident_store', 'uses' => 'IncidentController@store']);
+Route::post('/incident/store', ['as' => 'incident_store', 'middleware' => 'auth:admin,user,support','uses' => 'IncidentController@store']);
 
-Route::get('/incident/edit/{id}', ['as' => 'incident_edit', 'uses' => 'IncidentController@edit']);
+Route::get('/incident/edit/{id}', ['as' => 'incident_edit','middleware' => 'auth:admin', 'uses' => 'IncidentController@edit']);
 
-Route::get('/incident/view/{id}', ['as' => 'incident_view','uses' => 'IncidentController@show']);
+Route::get('/incident/view/{id}', ['as' => 'incident_view','middleware' => 'auth:admin,user,support','uses' => 'IncidentController@show']);
 
-patch('/incident/work/{incident}',['uses'=>'IncidentController@updateToWorkInProgress']);
+patch('/incident/work/{incident}',['middleware' => 'auth:admin,support','uses'=>'IncidentController@updateToWorkInProgress']);
 
-patch('/incident/complete/{incident}',['uses'=>'IncidentController@updateToSolution']);
+patch('/incident/complete/{incident}',['middleware' => 'auth:admin,support','uses'=>'IncidentController@updateToSolution']);
 
 delete('/incident/{incident}', ['middleware' => 'auth:admin','uses'=>'IncidentController@destroy']);
 
