@@ -31,7 +31,7 @@
             <td>{{ $p->description }}</td>
             <td>{{ $p->time_priority }}</td>
             @if ($p->status == 1)
-            <td>Enable</td>
+            <td>Enabled</td>
             @else
             <td>Disable</td>
             @endif
@@ -48,7 +48,6 @@
             </td>
         </tr>
         @endforeach
-    </table> 
-    @endsection
+    </table>
 </div>
 @endsection

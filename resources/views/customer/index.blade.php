@@ -23,7 +23,7 @@
     </div> <!-- end .flash-message -->
     <table class="table">
         @foreach($customers as $p)
-        <th>Nombre</th>
+        <th>Name</th>
         <th>Stands</th>
         <th>Email</th>
         <th>Status</th>
@@ -33,7 +33,7 @@
             <td>{{ $p->stand }}</td>
             <td>{{ $p->email }}</td>
             @if ($p->status == 1)
-            <td>Enable</td>
+            <td>Enabled</td>
             @else
             <td>Disable</td>
             @endif
@@ -50,7 +50,6 @@
             </td>
         </tr>
         @endforeach
-    </table> 
-    @endsection
+    </table>
 </div>
 @endsection

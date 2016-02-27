@@ -22,7 +22,12 @@
     <h5><strong>Name:</strong>&nbsp;<span>{!!$user->name!!}</span></h5>
     <h5><strong>Email:</strong>&nbsp;<span>{!!$user->email!!}</span></h5>
     <h5><strong>Address:</strong>&nbsp;<span>{!!$user->type_user->description!!}</span></h5>
-    <h5><strong>Status:</strong>&nbsp;<span>{!!$user->status!!}</span></h5>
+    <h5><strong>Status:</strong>&nbsp;<span>
+    @if ($user->status)
+	 	Enabled
+    @else
+    	Disabled
+    @endif</span></h5>
 
     <div class="panel panel-default">
         <div class="panel-heading">

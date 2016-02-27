@@ -33,9 +33,9 @@
             <td>{{ $p->email }}</td>
             <td>{{ $p->type_user->description }}</td>
             @if ($p->status == 1)
-            <td>Enable</td>
+            <td>Enabled</td>
             @else
-            <td>Disable</td>
+            <td>Disabled</td>
             @endif
             <td>
                 <div class="btn-group" role="group" aria-label="...">
@@ -43,14 +43,13 @@
                     <a href="{{ URL::to('user/edit')."/".$p->id }}" class="btn btn-default">Edit</a>
                     {!! Form::open(array('url' => 'user/' . $p->id, 'class' => 'pull-right')) !!}
                     {!! Form::hidden('_method', 'DELETE') !!}
-                    {!! Form::button('Borrar', array('class' => 'btn btn-warning',
+                    {!! Form::button('Delete', array('class' => 'btn btn-warning',
                     'data-target'=>'#confirmDelete','data-message'=>'Are you sure delete this user?','data-toggle'=>'modal')) !!}                   
                     {!! Form::close() !!}
                 </div>
             </td>
         </tr>
         @endforeach
-    </table> 
-    @endsection
+    </table>
 </div>
 @endsection

@@ -52,6 +52,7 @@ class UserController extends Controller {
     }
 
     private function arrayCustomers() {
+    	$arrC = array();
         $customers = $this->em->getRepository("App\Entity\Customer")->findAll();
         foreach ($customers as $c) {
             $arrC[$c->id] = $c->stand;
@@ -60,6 +61,7 @@ class UserController extends Controller {
     }
 
     private function arrayTypeUsers() {
+    	$arrC = array();
         $typeUsers = $this->em->getRepository("App\Entity\Type_User")->findAll();
         foreach ($typeUsers as $c) {
             $arrC[$c->id] = $c->description;

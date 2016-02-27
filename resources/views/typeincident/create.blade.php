@@ -33,7 +33,7 @@
     'placeholder'=>'description')) !!}
 
     {!! Form::label('Status:') !!}
-    {!! Form::select('status', array('0' => 'Desactivo', '1' => 'Activo'), isset($typeincident) ? $typeincident->status:'', array('class'=>'form-control')) !!} 
+    {!! Form::select('status', array('0' => 'Disabled', '1' => 'Enabled'), isset($typeincident) ? $typeincident->status:'', array('class'=>'form-control')) !!} 
 </div>
 
 <div class="panel-body">

@@ -39,7 +39,7 @@
     'placeholder'=>'time in days')) !!}
 
     {!! Form::label('Status:') !!}
-    {!! Form::select('status', array('0' => 'Desactivo', '1' => 'Activo'), isset($priority) ? $priority->status:'', array('class'=>'form-control')) !!} 
+    {!! Form::select('status', array('0' => 'Disabled', '1' => 'Enabled'), isset($priority) ? $priority->status:'', array('class'=>'form-control')) !!} 
 </div>
 
 <div class="panel-body">
