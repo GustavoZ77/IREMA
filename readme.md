@@ -1,37 +1,39 @@
 # IREMA
-Incident Record Manager
 
-Is an little application to register a incidents and issues in another applications.
-is oriented for to be easy and give all necessary information about the all workflow and solution for each incident.
-has been developed using laravel 5 and Doctrine 2 for Laravel.
-The objective is reach to cover all steps for attend any issues and incidents into the differentes applications and help to the production
-support team for register and monitoring resolution into the application.
-in the next versions the application will use the generated information for provide automatic resolutions.
+##Incident Record Manager
 
-Installation and configuration
+This is a little incident tracking application.
+It is designed to be easy to use and track all necessary information about the all workflow and solution for each incident.
+The code has been developed using laravel 5 and Doctrine 2 for Laravel.
+The objective is to cover all steps to track any issues and incidents from the different applications and help the production
+support team to keep a track of the resolution.
+In future versions of the application, it is intended to use the tracked information from previous incidents to provide automatic resolution information.
 
-a) Preparing the environment
+###Installation and configuration
 
-1- Install laravel version https://laravel.com/docs/5.1   
-2- Execute composer update   
-3- Create a new laravel project for IREMA      
-4- git clone https://github.com/GustavoZ77/IREMA.git temp
-5- replace the composer.json for of the into temp
-6- execute composer install and composer update comand
-7- please move config/app.php to config directory and replace config/app.php
+1. Run 
+```
+git clone https://github.com/GustavoZ77/IREMA.git
+```
+2. Move to IREMA folder
+3. Run
+```
+php composer.phar install
+```
+4. Generate proxy object running
+```
+php artisan doctrine:generate:proxies
+```
+5. Connect to your mariadb database and create an empty database
+```
+create database [DATABASE_NAME];
+```
+6. Create the tables needed by the application with the following command
+```
+cat app/script/script.sql | mariadb -u [USER_NAME] -p [DATABASE_NAME]
+```
 
-c) Copying the last files
-
-1- please move all files into temp/app and .git to IREMA directory   
-2- please move all resources directory and replace into IREMA directory   
-3- please move assests directory to public directory 
-
-b) Conecting to database
-
-1- please move config/auth.php to config directory and replace config.php
-2- generate proxy object php artisan doctrine:generate:proxies
-3- into script folder is the db script, please import into your mysql db
-
-references:
+###References:
 https://laravel.com/docs/5.1
 http://www.laraveldoctrine.org/
+
