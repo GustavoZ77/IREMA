@@ -11,18 +11,12 @@ In future versions of the application, it is intended to use the tracked informa
 
 ###Installation and configuration
 
-1. Run 
-    git clone https://github.com/GustavoZ77/IREMA.git
-2. Move to IREMA folder
-    cd IREMA
-3. Run
-    php composer.phar install
-4. Generate proxy object running
-    php artisan doctrine:generate:proxies
-5. Connect to your mariadb database and create an empty database
-    create database [DATABASE_NAME];
-6. Create the tables needed by the application with the following command
-    cat app/script/script.sql | mariadb -u [USER_NAME] -p [DATABASE_NAME]
+1. Run `git clone https://github.com/GustavoZ77/IREMA.git`
+2. Move to IREMA folder `cd IREMA`
+3. Run `php composer.phar install`
+4. Generate proxy object running `php artisan doctrine:generate:proxies`
+5. Connect to your mariadb database and create an empty database `create database [DATABASE_NAME];`
+6. Create the tables needed by the application with the following command `cat app/script/script.sql | mariadb -u [USER_NAME] -p [DATABASE_NAME]`
 
 ###References:
 * https://laravel.com/docs/5.1
