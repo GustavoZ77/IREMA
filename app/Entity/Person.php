@@ -17,7 +17,8 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping AS ORM;
+use App\Exceptions\PropertyNotFoundException;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\MappedSuperclass 
@@ -64,21 +65,6 @@ class Person {
      */
     protected $status;
 
-    /* margic get method
-     * 
-     * @param $name 
-     * @access public
-     * @return property 
-     */
-
-    public function __get($name) {
-        if (property_exists(__CLASS__, $name)) {
-            return $this->$name;
-        } else {
-            throw new PropertyNotFoundException('Not found the property ' . $name);
-        }
-    }
-
     /* get all applications by customer
      * 
      * @param $name 
@@ -90,4 +76,35 @@ class Person {
         return $this->applications;
     }
 
+
+    /**
+     * margic get method
+     *
+     * @param $property
+     * @access public
+     * @return property
+     */
+    public function __get($property) {
+    	if (property_exists(__CLASS__, $property)) {
+    		return $this->$property;
+    	} else {
+    		throw new PropertyNotFoundException('Not found the property ' . $property);
+    	}
+    }
+    
+    /**
+     * margic set method
+     *
+     * @param $property
+     * @param $value
+     * @access public
+     */
+    public function __set($property, $value) {
+    	if (property_exists(__CLASS__, $property)) {
+    		$this->$property = $value;
+    	} else {
+    		throw new PropertyNotFoundException('Not found the property ' . $property);
+    	}
+    }
+    
 }

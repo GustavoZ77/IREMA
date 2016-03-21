@@ -24,7 +24,12 @@
     <h5><strong>Email:</strong>&nbsp;<span>{!!$customer->email!!}</span></h5>
     <h5><strong>Phone:</strong>&nbsp;<span>{!!$customer->phone!!}</span></h5>
     <h5><strong>Address:</strong>&nbsp;<span>{!!$customer->address!!}</span></h5>
-    <h5><strong>Status:</strong>&nbsp;<span>{!!$customer->status!!}</span></h5>
+    <h5><strong>Status:</strong>&nbsp;<span>
+    @if ($customer->status)
+	 	Enabled
+    @else
+    	Disabled
+    @endif</span></h5>
 </div>
 @endsection
 

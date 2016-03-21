@@ -7,7 +7,7 @@
 <div class="panel-heading">
     <h4>Incident
         @if(isset($incident))
-        <span class="label label-default">Edit:&nbsp;{{$incident->id}}</span>
+        <a href='{{ URL::to("incident/edit")."/".$incident->id }}' class="btn btn-default">Edit</a>
         @else
         <span class="label label-default">Create</span>
         @endif
@@ -32,6 +32,13 @@
 
     <h5><strong>Priority:</strong>&nbsp;<span>{!! $incident->priority->description !!}</span></h5>
 
-    <h5><strong>Status:</strong>&nbsp;<span>{!! $incident->status_incident !!}</span></h5>
+    <h5><strong>Status:</strong>&nbsp;<span>
+    @if ($incident->status_incident == 0)
+		Scheduled
+    @elseif($incident->status_incident == 1)
+    	Work in progress
+    @elseif($incident->status_incident == 2)
+        Complete
+    @endif</span></h5>
 </div>
 @endsection

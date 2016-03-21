@@ -29,7 +29,7 @@
         <tr>
             <td>{{ $t->description }}</td>
             @if ($t->status == 1)
-            <td>Enable</td>
+            <td>Enabled</td>
             @else
             <td>Disable</td>
             @endif
@@ -46,7 +46,6 @@
             </td>
         </tr>
         @endforeach
-    </table> 
-    @endsection
+    </table>
 </div>
 @endsection

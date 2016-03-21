@@ -35,7 +35,6 @@ class ApplicationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-
         $apps = $this->em->getRepository("App\Entity\Application")->findAll();
         return view('application.index')->with(
                         'apps', $apps
@@ -54,6 +53,7 @@ class ApplicationController extends Controller {
     }
 
     private function arrayCustomers() {
+    	$arrC = array();
         $customers = $this->em->getRepository("App\Entity\Customer")->findAll();
         foreach ($customers as $c) {
             $arrC[$c->id] = $c->stand;

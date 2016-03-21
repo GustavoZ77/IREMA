@@ -34,13 +34,14 @@
             <td>{{ $p->application->name }}</td>
             <td>{{ $p->asigned->name }}</td>
             <td>{{ $p->entered_by->name }}</td>
-            @if ($p->status_incident == 0)
-            <td>Scheduled</td>
+            <td>@if ($p->status_incident == 0)
+            Scheduled
             @elseif($p->status_incident == 1)
-            <td>Work in progress</td>
+            Work in progress
             @elseif($p->status_incident == 2)
-            <td>Complete</td>
+            Complete
             @endif
+            </td>
             <td>
                 <div class="btn-group" role="group" aria-label="...">
                     <a href="{{ URL::to('incident/view')."/".$p->id }}" class="btn btn-default">View</a>
@@ -54,7 +55,6 @@
             </td>
         </tr>
         @endforeach
-    </table> 
-    @endsection
+    </table>
 </div>
 @endsection

@@ -42,7 +42,7 @@
     {!! Form::select('customer_id', $customers, isset($ire_app) ? $ire_app->customer->id:'',array('class'=>'form-control')) !!}
 
     {!! Form::label('Status:') !!}
-    {!! Form::select('status', array('0' => 'Desactivo', '1' => 'Activo'), isset($ire_app) ? $ire_app->status:'', array('class'=>'form-control')) !!} 
+    {!! Form::select('status', array('0' => 'Disabled', '1' => 'Enabled'), isset($ire_app) ? $ire_app->status:'', array('class'=>'form-control')) !!} 
 </div>
 
 <div class="panel-body">

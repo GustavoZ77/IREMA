@@ -21,7 +21,12 @@
 <div class="panel-body">
     <h5><strong>Description:</strong>&nbsp;<span>{!!$priority->description!!}</span></h5>
     <h5><strong>Time:</strong>&nbsp;<span>{!!$priority->time_priority!!}</span></h5>
-    <h5><strong>Status:</strong>&nbsp;<span>{!!$priority->status!!}</span></h5>
+    <h5><strong>Status:</strong>&nbsp;<span>
+    @if ($priority->status)
+	 	Enabled
+    @else
+    	Disabled
+    @endif</span></h5>
 </div>
 @endsection
 

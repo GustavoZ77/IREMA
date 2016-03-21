@@ -31,9 +31,9 @@
             <td>{{ $p->name }}</td>
             <td>{{ $p->customer->stand }}</td>
             @if ($p->status == 1)
-            <td>Enable</td>
+            <td>Enabled</td>
             @else
-            <td>Disable</td>
+            <td>Disabled</td>
             @endif
             <td>
                 <div class="btn-group" role="group" aria-label="...">
@@ -48,7 +48,6 @@
             </td>
         </tr>
         @endforeach
-    </table> 
-    @endsection
+    </table>
 </div>
 @endsection

@@ -23,9 +23,9 @@
              <h1>IREMA<small>&nbsp;Incident Record Manager</small>
                 <small class="pull-right" >
                     @if(Auth::check())
-                    <span class="label label-primary" style="font-size: 0.5em;" >Bienvenido:&nbsp;{{Auth::user()->name}}</span>
+                    <span class="label label-primary" style="font-size: 0.5em;" >Welcome:&nbsp;{{Auth::user()->name}}</span>
                     {!! HTML::link('auth/logout', 'Logout', array('class' => 'btn btn-default')) !!}
-                    {!! HTML::link('auth/logout', 'Cambiar contraseña', array('class' => 'btn btn-default')) !!}
+                    {!! HTML::link('auth/logout', 'Change password', array('class' => 'btn btn-default')) !!}
                     @else
                     {!! HTML::link('auth/login', 'Login', array('class' => 'btn btn-default')) !!}
                     @endif
@@ -38,7 +38,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ URL::to('incident/create') }}"  >Create Incident</a>
+                    <a class="navbar-brand" href="{{ URL::to('incident/create') }}" >Create Incident</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,7 +61,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catalogs <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ URL::to('priority') }}">Priority</a></li>
-                                <li><a href="{{ URL::to('typeincident') }}">Type incidents</a></li>
+                                <li><a href="{{ URL::to('typeincident') }}">Incident Type</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
-                            <button type="submit" class="btn btn-default">Buscar</button>
+                            <button type="submit" class="btn btn-default">Search</button>
                         </form>
                     </ul>    
                 </div><!-- /.navbar-collapse -->

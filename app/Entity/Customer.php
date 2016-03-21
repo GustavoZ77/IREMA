@@ -16,7 +16,8 @@
 namespace App\Entity;
 
 use App\Entity\Person;
-use Doctrine\ORM\Mapping AS ORM;
+use App\Exceptions\PropertyNotFoundException;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity 
@@ -69,21 +70,6 @@ class Customer extends Person {
      */
     private $users;
 
-    /**
-     * margic set method
-     * 
-     * @param $property
-     * @param $value
-     * @access public
-     */
-    public function __set($property, $value) {
-        if (property_exists(__CLASS__, $property)) {
-            $this->$property = $value;
-        } else {
-            throw new PropertyNotFoundException('Not found the property ' . $property);
-        }
-    }
-
     /* set all application 
      * 
      * @param $name 
@@ -94,4 +80,35 @@ class Customer extends Person {
         $this->applications = $applications;
     }
 
+
+    /**
+     * margic get method
+     *
+     * @param $property
+     * @access public
+     * @return property
+     */
+    public function __get($property) {
+    	if (property_exists(__CLASS__, $property)) {
+    		return $this->$property;
+    	} else {
+    		throw new PropertyNotFoundException('Not found the property ' . $property);
+    	}
+    }
+    
+    /**
+     * margic set method
+     *
+     * @param $property
+     * @param $value
+     * @access public
+     */
+    public function __set($property, $value) {
+    	if (property_exists(__CLASS__, $property)) {
+    		$this->$property = $value;
+    	} else {
+    		throw new PropertyNotFoundException('Not found the property ' . $property);
+    	}
+    }
+    
 }

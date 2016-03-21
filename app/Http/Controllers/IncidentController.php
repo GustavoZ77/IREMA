@@ -81,6 +81,7 @@ class IncidentController extends Controller {
     }
 
     private function arrayCustomers() {
+    	$arrC = array();
         $customers = $this->em->getRepository("App\Entity\Customer")->findAll();
         foreach ($customers as $c) {
             $arrC[$c->id] = $c->stand;
@@ -89,6 +90,7 @@ class IncidentController extends Controller {
     }
 
     private function arrayApplication() {
+    	$arrC = array();
         $apps = $this->em->getRepository("App\Entity\Application")->findAll();
         foreach ($apps as $c) {
             if ($c->customer->id == Auth::User()->customer->id) {
@@ -99,8 +101,9 @@ class IncidentController extends Controller {
     }
 
     private function arrayUsers() {
-        $user = $this->em->getRepository("App\Entity\User")->findAll();
-        foreach ($user as $c) {
+    	$arrC = array();
+        $users = $this->em->getRepository("App\Entity\User")->findAll();
+        foreach ($users as $c) {
             if ($c->type_user->id == 4) {
                 $arrC[$c->id] = $c->name;
             }
@@ -109,6 +112,7 @@ class IncidentController extends Controller {
     }
 
     private function arrayPriority() {
+    	$arrC = array();
         $priorities = $this->em->getRepository("App\Entity\Priority")->findAll();
         foreach ($priorities as $c) {
             $arrC[$c->id] = $c->description;
@@ -117,6 +121,7 @@ class IncidentController extends Controller {
     }
 
     private function arrayTypeIncident() {
+    	$arrC = array();
         $types = $this->em->getRepository("App\Entity\Type_Incident")->findAll();
         foreach ($types as $c) {
             $arrC[$c->id] = $c->description;

@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
-                            <button type="submit" class="btn btn-default">Buscar</button>
+                            <button type="submit" class="btn btn-default">Search</button>
                         </form>
                     </ul>    
                 </div><!-- /.navbar-collapse -->

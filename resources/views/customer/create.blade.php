@@ -57,7 +57,7 @@
     'placeholder'=>'address')) !!}
     
     {!! Form::label('Status:') !!}
-    {!! Form::select('status', array('0' => 'Desactivo', '1' => 'Activo'), isset($customer) ? $customer->status:'', array('class'=>'form-control')) !!} 
+    {!! Form::select('status', array('0' => 'Disabled', '1' => 'Enabled'), isset($customer) ? $customer->status:'', array('class'=>'form-control')) !!} 
 </div>
 
 <div class="panel-body">
